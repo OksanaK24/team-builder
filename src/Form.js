@@ -17,8 +17,14 @@ export default function Form(props){
 
     const handleSubmit = event => {
         event.preventDefault();
-        props.setMembers([newMember, ...props.members]);
-        resetForm();
+        if(!newMember.email.includes("@")){
+            alert ("Please enter valid email");
+            
+        }else{
+            props.setMembers([ ...props.members, newMember]);
+            console.log("Hello");
+            resetForm();
+        };
     };
 
     const resetForm = () => {
@@ -36,7 +42,7 @@ export default function Form(props){
               name = "name"
               placeholder = "Please enter your name"
               onChange = {handleChange}
-              value = {newMember.title}
+              value = {newMember.name}
             />
             <input 
               type = "text"
